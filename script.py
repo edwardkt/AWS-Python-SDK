@@ -2,6 +2,17 @@
 
 import boto.ec2
 
-ec2 = boto.ec2.connect_to_region('us-west-2')
-ec2.run_instances('ami-8799d9b7')
+# Creating Connection to Service
+conn = boto.ec2.connect_to_region("us-west-2")
+print conn
 
+# Launch AWS EC2 instance 
+#conn.run_instances('ami-8799d9b7')
+
+# Command to start instances
+reservations = conn.get_all_reservations()
+print reservations
+
+# See which instances are associated with reservation
+instances = reservations[0].instances
+print instances
